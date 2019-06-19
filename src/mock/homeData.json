@@ -1334,6 +1334,7 @@
       "supportNum": "62人已支持"
     }
   ],
+  "component14": "-----------------最后的商品模块（未完成）-----------------",
   "categoryModule": [
     {
       "manuItemIdList": [],
@@ -3971,6 +3972,7 @@
       "bckColor": "#FFFFFF"
     }
   },
+  "component11": "-----------------------品牌制造商----------------------",
   "tagList": [
     {
       "floorPrice": 9.9,
@@ -4053,6 +4055,7 @@
       "id": 1001000
     }
   ],
+  "component12": "-----------------------类目热销榜----------------------",
   "categoryHotSellModule": {
     "titleTargetUrl": "",
     "categoryList": [
@@ -5864,6 +5867,7 @@
       "targetUrl": "https://act.you.163.com/act/pub/mBXh03NhVC.html"
     }
   ],
+  "component13": "-----------------------福利，拼团----------------------",
   "indexActivityModule": [
     {
       "backgroundUrl": "",

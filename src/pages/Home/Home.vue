@@ -5,6 +5,15 @@
       :promise="promise"
       :sceneLightShoppingGuideModule="sceneLightShoppingGuideModule"
       :personalShop="personalShop"
+      :flashSaleModule="flashSaleModule"
+      :newItemList='newItemList'
+      :popularItemList='popularItemList'
+      :topicList='topicList'
+      :zhongChouList='zhongChouList'
+      :categoryHotSellModule='categoryHotSellModule'
+      :indexActivityModule='indexActivityModule'
+      :tagList='tagList'
+      :categoryModule='categoryModule'
     ></Recommend>
   </div>
 </template>
@@ -19,7 +28,16 @@ import {reqHomeData} from '../../api'
         kingKongList:[],
         promise:[],
         sceneLightShoppingGuideModule:[],
-        personalShop:[]
+        personalShop:[],
+        flashSaleModule:{},
+        newItemList:[],
+        popularItemList:[],
+        topicList:[],
+        zhongChouList:[],
+        categoryHotSellModule:{},
+        indexActivityModule:[],
+        tagList:[],
+        categoryModule:[]
       }
     },
     async mounted(){
@@ -30,7 +48,16 @@ import {reqHomeData} from '../../api'
         this.promise = result.data.policyDescList
         this.sceneLightShoppingGuideModule = result.data.sceneLightShoppingGuideModule
         this.personalShop = result.data.personalShop
-        console.log(result.data.personalShop)
+        this.flashSaleModule = result.data.flashSaleModule
+        this.newItemList = result.data.newItemList
+        this.popularItemList = result.data.popularItemList
+        this.topicList = result.data.topicList
+        this.zhongChouList = result.data.zhongChouList
+        this.categoryHotSellModule = result.data.categoryHotSellModule
+        this.indexActivityModule = result.data.indexActivityModule
+        this.tagList = result.data.tagList
+        this.categoryModule = result.data.categoryModule
+        // console.log(result.data.popularItemList)
       }
     },
     components:{

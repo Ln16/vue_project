@@ -6,9 +6,9 @@
           <img src="../../assets/images/logo/logo.png" alt="">
         </a>
       </h1>
-      <div class="search">
+      <div class="search" @click="$router.push('/search')">
         <!-- icon -->
-        <i class="iconfont icon-bianji"></i>
+        <i class="iconfont icon-iconfontzhizuobiaozhun22"></i>
         <span>搜索商品,共25116件好物</span>
       </div>
       <div class="loginBtn">登录</div>
@@ -46,13 +46,13 @@
     </div>
     <div class="spinner">
       <div class="spinnerShadow">
-        <i class="iconfont icon-bianji" @click="showAllNav"></i>
+        <i class="iconfont icon-jiantou" @click="showAllNav"></i>
       </div>
     </div>
     <div class="navWrap" v-show="navWrapShow">
       <div class="navWrapTitle">
         <span>全部频道</span>
-        <i class="iconfont icon-bianji" @click="showAllNav"></i>
+        <i class="iconfont icon-jiantou" @click="showAllNav"></i>
       </div>
       <ul class="allNavList">
         <li class="allNavItem" v-for="(item, index) in 9" :key="index" :class="{active:index===selected}" @click="selectNav(index)">
@@ -120,9 +120,9 @@ import BScroll from 'better-scroll'
         i 
           margin 0.5vw
       .loginBtn 
-        border 1px solid #b4282d
+        border 1.1px solid rgba(180,40,45,0.5)
         color #b4282d
-        border-radius 3px
+        border-radius 6px
         width 9.2vw   
         height 4.7vw  
         font-size 3vw

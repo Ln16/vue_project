@@ -2,23 +2,23 @@
   <div class="FooterNav">
     <div class="navList">
       <div class="navItem" :class="{active:index===0}" @click="toRouter(0)">
-        <i class="iconfont icon-bianji"></i>
+        <i class="iconfont icon-shouye"></i>
         <span>首页</span>
       </div>
       <div class="navItem" :class="{active:index===1}" @click="toRouter(1)">
-        <i class="iconfont icon-bianji"></i>
+        <i class="iconfont icon-chouti"></i>
         <span>分类</span>
       </div>
       <div class="navItem" :class="{active:index===2}" @click="toRouter(2)">
-        <i class="iconfont icon-bianji"></i>
+        <i class="iconfont icon-tupian"></i>
         <span>识物</span>
       </div>
       <div class="navItem" :class="{active:index===3}" @click="toRouter(3)">
-        <i class="iconfont icon-bianji"></i>
+        <i class="iconfont icon-gouwuche"></i>
         <span>购物车</span>
       </div>
       <div class="navItem" :class="{active:index===4}" @click="toRouter(4)">
-        <i class="iconfont icon-bianji"></i>
+        <i class="iconfont icon-icon-test"></i>
         <span>个人</span>
       </div>
     </div>
