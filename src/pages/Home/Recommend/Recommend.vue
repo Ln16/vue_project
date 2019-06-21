@@ -277,6 +277,7 @@
         </div>
       </footer>
     </section>
+    <BackTop></BackTop>
   </div>
 </template>
 
@@ -346,9 +347,11 @@ import BScroll from 'better-scroll'
         const bigArr = []
         let smallArr = []
         this.personalShop.forEach((el,index) => {
+          // 文字长度超过指定数，显示省略号
           if (el.name.length>15) {
             el.name=el.name.slice(0,12)+'...'
           }
+          // 分割数组
           if (index%3===0) {
             smallArr = []
             bigArr.push(smallArr)
@@ -418,7 +421,7 @@ import BScroll from 'better-scroll'
           }
         })
           
-      }
+      },
     }
   }
 </script>

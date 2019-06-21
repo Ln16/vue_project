@@ -1,9 +1,9 @@
 <template>
   <div class=" twoCategories">
     <ul class="twoCategoriesList">
-      <img v-lazy="categoryL1List&&categoryL1List.wapBannerUrl" class="wapBanner">
+      <img :src="categoryL1List&&categoryL1List.wapBannerUrl" class="wapBanner">
       <li class="twoCategoriesItem" v-for="(item, index) in categoryL1List&&categoryL1List.subCateList" :key="index">
-        <img v-lazy="item.wapBannerUrl">
+        <img :src="item.wapBannerUrl">
         <span>{{item.name}}</span>
       </li>
     </ul>

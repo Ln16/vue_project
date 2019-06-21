@@ -3,7 +3,7 @@
     <div class="headerTopContainer">
       <h1>
         <a href="javascript:;">
-          <img src="../../assets/images/logo/logo.png" alt="">
+          <img src="../../assets/images/logo/logo.png">
         </a>
       </h1>
       <div class="search" @click="$router.push('/search')">
@@ -14,45 +14,49 @@
       <div class="loginBtn" @click="$router.push('/personal')">登录</div>
     </div>
     <div class="headerNav clearfix">
-      <ul class="headerNavList">
-        <li class="headerNavItem active">
-          <div>推荐</div>
-        </li>
-        <li class="headerNavItem">
-          <div>居家生活</div>
-        </li>
-        <li class="headerNavItem">
-          <div>服饰鞋包</div>
-        </li>
-        <li class="headerNavItem">
-          <div>美食酒水</div>
-        </li>
-        <li class="headerNavItem">
-          <div>个护清洁</div>
-        </li>
-        <li class="headerNavItem">
-          <div>母婴亲子</div>
-        </li>
-        <li class="headerNavItem">
-          <div>运动旅行</div>
-        </li>
-        <li class="headerNavItem">
-          <div>数码家电</div>
-        </li>
-        <li class="headerNavItem">
-          <div>全球特色</div>
-        </li>
-      </ul>
+      <div class="headerNavWrap">
+        <ul class="headerNavList">
+          <li class="headerNavItem active">
+            <div>推荐</div>
+          </li>
+          <li class="headerNavItem">
+            <div>居家生活</div>
+          </li>
+          <li class="headerNavItem">
+            <div>服饰鞋包</div>
+          </li>
+          <li class="headerNavItem">
+            <div>美食酒水</div>
+          </li>
+          <li class="headerNavItem">
+            <div>个护清洁</div>
+          </li>
+          <li class="headerNavItem">
+            <div>母婴亲子</div>
+          </li>
+          <li class="headerNavItem">
+            <div>运动旅行</div>
+          </li>
+          <li class="headerNavItem">
+            <div>数码家电</div>
+          </li>
+          <li class="headerNavItem">
+            <div>全球特色</div>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="spinner">
       <div class="spinnerShadow">
-        <i class="iconfont icon-jiantou" @click="showAllNav"></i>
+        <div :class="{active:navWrapShow}">
+          <i class="iconfont icon-jiantou" @click="showAllNav"></i>
+        </div>
       </div>
     </div>
     <div class="navWrap" v-show="navWrapShow">
       <div class="navWrapTitle">
         <span>全部频道</span>
-        <i class="iconfont icon-jiantou" @click="showAllNav"></i>
+        <!-- <i class="iconfont icon-jiantou" @click="showAllNav"></i> -->
       </div>
       <ul class="allNavList">
         <li class="allNavItem" v-for="(item, index) in 9" :key="index" :class="{active:index===selected}" @click="selectNav(index)">
@@ -82,7 +86,7 @@ import BScroll from 'better-scroll'
       }
     },
     mounted(){
-      new BScroll('.headerNav',{
+      new BScroll('.headerNavWrap',{
         scrollX: true,
         click: true
       })
@@ -130,18 +134,20 @@ import BScroll from 'better-scroll'
         line-height 4.7vw
     .headerNav  
       margin-top 3vw
-      .headerNavList
-        float left
-        white-space nowrap
-        .headerNavItem
-          display inline-block
-          margin-right 7vw
-          &.active
-            border-bottom 0.5vw solid #b4282d
-          div 
-            text-align center
-            height 6vw
-            width 13vw
+      .headerNavWrap
+        width 640px
+        .headerNavList
+          float left
+          white-space nowrap
+          .headerNavItem
+            display inline-block
+            margin-right 7vw
+            &.active
+              border-bottom 0.5vw solid #b4282d
+            div 
+              text-align center
+              height 6vw
+              width 13vw
     .spinner
       width 140px 
       height 60px
@@ -157,6 +163,12 @@ import BScroll from 'better-scroll'
         text-align center
         line-height 60px
         float right
+        position relative
+        z-index 1
+        div 
+          transition 0.5s
+          &.active
+            transform rotate(180deg)
     .navWrap   
       position absolute
       top 88px

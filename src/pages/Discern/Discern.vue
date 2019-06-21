@@ -65,8 +65,10 @@
             <div class="watch"><i class="iconfont icon-yanjing"></i> {{item.readCount}}人看过</div>
           </div>
         </li>
+        <div class="noMore" v-show="noMore">没有更多了</div>
       </ul>
     </div>
+    <BackTop></BackTop>
   </div>
 </template>
 
@@ -77,11 +79,57 @@ import {reqDiscover} from '../../api'
     data() {
       return {
         discoverList:[],
-        isDiscover:true
+        isDiscover:true,
+        dropDown:false,
+        noMore:false
+      }
+    },
+    methods:{
+      scrollFn(){
+        this.$nextTick(() => {
+          if (!this.scroll) {
+            this.scroll = new BScroll('.discernContent', {
+              click: true,
+              scrollY: true,
+              probeType: 3
+            });
+            new BScroll('.nav',{
+              scrollX: true,
+              click: true
+            })
+          }else{
+            this.scroll.refresh();
+          }
+          //touchEnd（手指离开以后触发） 通过这个方法来监听下拉刷新
+          this.scroll.on('touchEnd', async (pos) => {
+              //上拉加载 总高度>下拉的高度+10 触发加载更多
+            if(this.scroll.maxScrollY>pos.y+10){
+              const result = await reqDiscover(++this.page,2)
+              if(result.code==='200'){
+                for (let index = 0; index < result.data.result.length; index++) {
+                  result.data.result[index].topics.forEach(element => {
+                    if (element.readCount>=10000) {
+                      element.readCount = Math.round(element.readCount/100)/10+'k'
+                    }
+                    this.discoverList.push(element)
+                  });
+                }
+                if (!result.data.hasMore) {
+                  this.noMore=true
+                }
+              }else{
+                alert('获取数据失败');
+              }
+              //使用refresh 方法 来更新scroll  解决无法滚动的问题
+              this.scroll.refresh()
+            }
+          })
+        });
       }
     },
     async mounted() {
-      const result = await reqDiscover(2,3)
+      this.page = 1
+      const result = await reqDiscover(1,2)
       if(result.code==='200'){
         for (let index = 0; index < result.data.result.length; index++) {
           result.data.result[index].topics.forEach(element => {
@@ -94,10 +142,8 @@ import {reqDiscover} from '../../api'
       }else{
         alert('获取数据失败');
       }
-      new BScroll('.nav',{
-        scrollX: true,
-        click: true
-      })
+      
+      this.scrollFn()
     },
   }
 </script>
@@ -165,6 +211,8 @@ import {reqDiscover} from '../../api'
                 height 4px
                 background-color: #b4282d
   .discernContent
+    height 1064px
+    overflow hidden
     .DiscernList
       background-color #f5f5f5
       margin-top 20px
@@ -250,5 +298,11 @@ import {reqDiscover} from '../../api'
               font-size 28px
               opacity 0.6   
           .bigImg 
-            width 272px    
+            width 272px   
+    .noMore  
+      width 100%
+      height 100px 
+      background-color #fff
+      line-height 100px
+      text-align center       
 </style>
