@@ -11,7 +11,7 @@
         <i class="iconfont icon-iconfontzhizuobiaozhun22"></i>
         <span>搜索商品,共25116件好物</span>
       </div>
-      <div class="loginBtn">登录</div>
+      <div class="loginBtn" @click="$router.push('/personal')">登录</div>
     </div>
     <div class="headerNav clearfix">
       <ul class="headerNavList">

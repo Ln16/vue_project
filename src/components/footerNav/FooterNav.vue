@@ -1,23 +1,23 @@
 <template>
   <div class="FooterNav">
     <div class="navList">
-      <div class="navItem" :class="{active:index===0}" @click="toRouter(0)">
+      <div class="navItem" :class="{active:this.$route.path==='/home'}" @click="$router.push('/home')">
         <i class="iconfont icon-shouye"></i>
         <span>首页</span>
       </div>
-      <div class="navItem" :class="{active:index===1}" @click="toRouter(1)">
+      <div class="navItem" :class="{active:this.$route.path==='/class'}" @click="$router.push('/class')">
         <i class="iconfont icon-chouti"></i>
         <span>分类</span>
       </div>
-      <div class="navItem" :class="{active:index===2}" @click="toRouter(2)">
+      <div class="navItem" :class="{active:this.$route.path==='/discern'}" @click="$router.push('/discern')">
         <i class="iconfont icon-tupian"></i>
         <span>识物</span>
       </div>
-      <div class="navItem" :class="{active:index===3}" @click="toRouter(3)">
+      <div class="navItem" :class="{active:this.$route.path==='/shoppingCart'}" @click="$router.push('/shoppingCart')">
         <i class="iconfont icon-gouwuche"></i>
         <span>购物车</span>
       </div>
-      <div class="navItem" :class="{active:index===4}" @click="toRouter(4)">
+      <div class="navItem" :class="{active:this.$route.path==='/personal'}" @click="$router.push('/personal')">
         <i class="iconfont icon-icon-test"></i>
         <span>个人</span>
       </div>
@@ -27,33 +27,6 @@
 
 <script type="text/ecmascript-6">
   export default {
-    data() {
-      return {
-        index:0
-      }
-    },
-    methods:{
-      toRouter(index){
-        this.index=index
-        switch (index) {
-          case 0:
-            this.$router.push('/home')
-            break
-          case 1:
-            this.$router.push('/class')
-            break
-          case 2:
-            this.$router.push('/home')
-            break
-          case 3:
-            this.$router.push('/home')
-            break
-          case 4:
-            this.$router.push('/home')
-            break 
-        }
-      }
-    }
   }
 </script>
 

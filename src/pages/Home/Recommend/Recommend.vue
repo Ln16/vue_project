@@ -15,7 +15,7 @@
     <div class="promise">
       <ul class="promiseList">
         <li class="promiseItem" v-for="(item, index) in promise" :key="index">
-          <img :src="item.icon">
+          <img v-lazy="item.icon">
           <span>{{item.desc}}</span>
         </li>
       </ul>
@@ -25,7 +25,7 @@
         <ul class="contentNavList">
           <li class="contentNavItem" v-for="(kingKong, index) in kingKongList" :key="index">
             <a :href="kingKong.schemeUrl">
-              <img :src="kingKong.picUrl" alt="">
+              <img v-lazy="kingKong.picUrl" alt="">
               <span>{{kingKong.text}}</span>
             </a>
           </li>
@@ -71,8 +71,8 @@
             <p>{{item.styleItem.title}}</p>
             <span>{{item.styleItem.desc}}</span>
             <div class="imgList">
-              <img :src="item.styleItem.picUrlList[0]">
-              <img :src="item.styleItem.picUrlList[1]">
+              <img v-lazy="item.styleItem.picUrlList[0]">
+              <img v-lazy="item.styleItem.picUrlList[1]">
             </div>
           </li>
         </ul>
@@ -84,7 +84,7 @@
             <div class="swiper-slide" v-for="(personalShops, index) in personalShopBigArr" :key="index">
               <ul class="customizeList">
                 <li class="customizeItem" v-for="(item, index) in personalShops" :key="index">
-                  <img :src="item.listPicUrl">
+                  <img v-lazy="item.listPicUrl">
                   <!-- 写到这了 -->
                   <span class="name">{{item.name}}<span class="price">￥{{item.retailPrice}}</span></span>
                 </li>
@@ -105,7 +105,7 @@
         </div>
         <ul class="limitList">
           <li class="limitItem" v-for="(item, index) in flashSaleModule.itemList" :key="index">
-            <img :src="item.picUrl">
+            <img v-lazy="item.picUrl">
             <div class="price">
               <span>￥{{item.activityPrice}}</span>
               <del>￥{{item.originPrice}}</del>
@@ -121,7 +121,7 @@
         </div>
         <ul class="limitList">
           <li class="limitItem" v-for="(item, index) in newItemListArr" :key="index">
-            <img :src="item.listPicUrl">
+            <img v-lazy="item.listPicUrl">
             <span class="text">{{item.name}}</span>
             <span class="price"><span>￥{{item.counterPrice}}</span></span>
           </li>
@@ -133,7 +133,7 @@
           <span class="more">更多></span>
         </div>
         <div class="popularContent">
-          <img :src="popularItemListFirst&&popularItemListFirst.listPicUrl">
+          <img v-lazy="popularItemListFirst&&popularItemListFirst.listPicUrl">
           <div class="describe">
             <span class="popularTag">{{popularItemListFirst&&popularItemListFirst.itemTagList&&popularItemListFirst.itemTagList[0].name}}</span>
             <span class="popularTitle">{{popularItemListFirst&&popularItemListFirst.name}}</span>
@@ -143,7 +143,7 @@
         </div>
         <ul class="popularList">
           <li class="popularItem" v-for="(item, index) in popularItemListArr" :key="index">
-            <img :src="item.listPicUrl">
+            <img v-lazy="item.listPicUrl">
             <span class="text">{{item.name}}</span>
             <span class="price">￥{{item.counterPrice}}</span>
           </li>
@@ -158,13 +158,13 @@
           <ul class="categoryHotSellModuleListBig">
             <li class="categoryHotSellModuleItemBig" v-for="(item, index) in categoryHotSellModuleBig" :key="index">
               <div>{{item.categoryName}}</div>
-              <img :src="item.picUrl">
+              <img v-lazy="item.picUrl">
             </li>
           </ul>
           <ul class="categoryHotSellModuleListSmall">
             <li class="categoryHotSellModuleItemSmall" v-for="(item, index) in categoryHotSellModuleArr" :key="index">
               <p>{{item.categoryName}}</p>
-              <img :src="item.picUrl">
+              <img v-lazy="item.picUrl">
             </li>
           </ul>
         </div>
@@ -177,7 +177,7 @@
               <p class="subTitle">{{item.subTitle}}</p>
               <p class="tag">{{item.tag}}</p>
             </div>
-            <img :src="item.picUrl">
+            <img v-lazy="item.picUrl">
             <div class="price">
               <span class="newPrice">{{item.activityPrice}}</span>
               <del class="oldPrice">{{item.originPrice}}</del>
@@ -207,7 +207,7 @@
         <div class="specialContent">
           <ul class="specialList">
             <li class="specialItem" v-for="(item, index) in topicListArr" :key="index">
-              <img :src="item.itemPicUrl">
+              <img v-lazy="item.itemPicUrl">
               <p class="specialTitle">{{item.title}}</p>
               <p class="specialSubTitle">{{item.subtitle}}</p>
             </li>
@@ -222,7 +222,7 @@
         <div class="crowdFundingContent">
           <ul class='crowdFundingList'>
             <li class="crowdFundingItem" v-for="(item, index) in zhongChouList" :key="index">
-              <img :src="item.picUrl">
+              <img v-lazy="item.picUrl">
               <div class="crowdFundingDescribe">
                 <p class="crowdFundingTitle">{{item.name}}</p>
                 <p class="crowdFundingPrice">￥{{item.retailPrice}}<span class="smallText">{{item.retailPricePostfix}}</span>
@@ -243,12 +243,12 @@
       <div class="categoryModule">
         <ul class="categoryModuleList">
           <li class="categoryModuleItem" v-for="(item, index) in categoryModule" :key="index">
-            <img :src="item.titlePicUrl" class="bigImg">
+            <img v-lazy="item.titlePicUrl" class="bigImg">
             <div class="categoryContent" :id="'category'+index">
               <ul class="categoryList">
                 <!-- 写到这 --> 
                 <li class="categoryItem" v-for="(item, index) in item.itemList" :key="index">
-                  <img :src="item.listPicUrl">
+                  <img v-lazy="item.listPicUrl">
                   <span class="name">{{item.name}}</span>
                   <div class="price">
                     <span class="newPrice">￥{{item.retailPrice}}</span>
@@ -283,7 +283,6 @@
 <script type="text/ecmascript-6">
 import Swiper from 'swiper'
 import BScroll from 'better-scroll'
-import { Promise } from 'q';
   export default {
     data() {
       return {

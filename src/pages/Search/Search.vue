@@ -55,8 +55,6 @@ import {reqSearchInit,reqMatching} from '../../api'
         },300)
         const result = await reqMatching(this.searchText)
         this.searchArr = result.data
-        console.log(result);
-        
       }
     },
   }
