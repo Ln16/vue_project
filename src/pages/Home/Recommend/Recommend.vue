@@ -246,7 +246,6 @@
             <img v-lazy="item.titlePicUrl" class="bigImg">
             <div class="categoryContent" :id="'category'+index">
               <ul class="categoryList">
-                <!-- 写到这 --> 
                 <li class="categoryItem" v-for="(item, index) in item.itemList" :key="index">
                   <img v-lazy="item.listPicUrl">
                   <span class="name">{{item.name}}</span>
@@ -427,6 +426,7 @@ import BScroll from 'better-scroll'
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+
 .homeContent
   width 100%
   position absolute

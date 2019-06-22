@@ -12,34 +12,13 @@
       </div>
       <nav class="nav clearfix">
         <ul class="navList">
-          <li class="navItem" :class="{active:true}">
-            推荐
-          </li>
-          <li class="navItem">
-            618年中盛典
-          </li>
-          <li class="navItem">
-            好货内部价
-          </li>
-          <li class="navItem">
-            回购榜
-          </li>
-          <li class="navItem">
-            晒单
-          </li>
-          <li class="navItem">
-            开发者日记
-          </li>
-          <li class="navItem">
-            达人
-          </li>
-          <li class="navItem">
-            HOME
+          <li class="navItem" :class="{active:index===navIndex}" v-for="(item, index) in discernNav" :key="index" @click="toggleNav(index)">
+            {{item.tabName}}
           </li>
         </ul>
       </nav>
     </div>
-    <div class="discernContent">
+    <div class="discernContent" v-show="navIndex===0">
       <ul class="DiscernList">
         <li class="DiscernItem" v-for="(item, index) in discoverList" :key="index">
           
@@ -68,20 +47,26 @@
         <div class="noMore" v-show="noMore">没有更多了</div>
       </ul>
     </div>
-    <BackTop></BackTop>
+    <Comment></Comment>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import BScroll from 'better-scroll'
-import {reqDiscover} from '../../api'
+import {reqDiscover,reqDiscernNav} from '../../api'
+import Comment from './Comment/Comment'
   export default {
+    components:{
+      Comment
+    },
     data() {
       return {
         discoverList:[],
         isDiscover:true,
         dropDown:false,
-        noMore:false
+        noMore:false,
+        discernNav:[],
+        navIndex:0
       }
     },
     methods:{
@@ -125,6 +110,15 @@ import {reqDiscover} from '../../api'
             }
           })
         });
+      },
+      async getDiscernNav(){
+        const result = await reqDiscernNav()
+        if(result.code==='200'){
+          this.discernNav = result.data
+        }
+      },
+      toggleNav(index){
+        this.navIndex=index
       }
     },
     async mounted() {
@@ -142,7 +136,7 @@ import {reqDiscover} from '../../api'
       }else{
         alert('获取数据失败');
       }
-      
+      this.getDiscernNav()
       this.scrollFn()
     },
   }

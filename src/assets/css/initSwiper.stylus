@@ -1,0 +1,21 @@
+#swiper1
+  .swiper-pagination-bullet 
+    width: 40px
+    height: 3px
+    display: inline-block
+    border-radius: 0
+    background: #000
+    opacity: .2
+  .swiper-pagination-bullet-active 
+      opacity: .9
+      background: #fff
+#swiper2
+  .swiper-pagination-bullet 
+    width: 12px
+    height: 12px
+    display: inline-block
+    background: #000
+    opacity: .2
+  .swiper-pagination-bullet-active 
+      opacity: .9
+      background: #b4282d   

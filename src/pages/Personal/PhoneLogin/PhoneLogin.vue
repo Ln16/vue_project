@@ -67,7 +67,7 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 .phoneLogin
   width 100%
-  height 100%
+  height 1246px
   background-color #fff
   .logoWrap
     width 100%
